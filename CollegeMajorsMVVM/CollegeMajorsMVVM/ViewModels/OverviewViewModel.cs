@@ -17,14 +17,14 @@ namespace CollegeMajorsMVVM.ViewModels
         public OverviewViewModel(string category)
         {
             Title = StringExtensions.FirstCharToUpper(category);
-            LoadMajorsCommand = new Command(async () => await ExecuteLoadMajorsCommand(category));
+            LoadMajorsCommand = new Command(async () => await ExecuteLoadMajorsCommand());
         }
         public OverviewViewModel()
         {
             Title = "All";
             LoadMajorsCommand = new Command(async () => await ExecuteLoadMajorsCommand());
         }
-        async Task ExecuteLoadMajorsCommand(string category = null)
+        async Task ExecuteLoadMajorsCommand()
         {
             if (IsBusy)
                 return;
@@ -34,9 +34,9 @@ namespace CollegeMajorsMVVM.ViewModels
                 if(Majors!=null)
                     Majors.Clear();
                 List<Major> majorList;
-                if (category != null)
+                if (Title != "All")
                 {
-                    majorList = await DataStore.GetMajorsByCategory(category);
+                    majorList = await DataStore.GetMajorsByCategory(Title);
 
                 }
                 else
