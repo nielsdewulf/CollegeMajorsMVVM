@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CollegeMajorsMVVM.Views.MajorPage"
+             xmlns:views="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <Grid BackgroundColor="#1F2F3F" Padding="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="Auto"/>
+                <!-- label for major name -->
+                <RowDefinition Height="35" />
+                <!-- share of women title -->
+                <RowDefinition Height="0" />
+                <RowDefinition Height="30" />
+                <!-- -> number of women -->
+                <RowDefinition Height="30" />
+                <!-- -> number of men -->
+
+                <RowDefinition Height="35" />
+                <!-- unemployment rate title -->
+                <RowDefinition Height="30" />
+                <!-- -> number of students employed -->
+                <RowDefinition Height="30" />
+                <!-- -> number of students UNemployed -->
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label x:Name="lblMajor" Text="{Binding Major.Name}" Grid.Row="1" FontSize="Large" TextColor="White" Grid.ColumnSpan="3" FontAttributes="Bold" />
+            <Label Text="Share of women" Grid.Row="2" HorizontalOptions="Start" FontSize="Large" TextColor="DarkGray" Grid.ColumnSpan="3" />
+
+            <!--Label for the SHARE OF WOMEN-->
+            <Label x:Name="lblShareOfWomen" Text="{Binding Major.ShareOfWomen}%}" Grid.Row="2" Grid.Column="2" HorizontalOptions="End" HorizontalTextAlignment="End" FontSize="Large" TextColor="#CBB475" />
+            <!--CALL FOR EXPERTS - CANVAS TO SHOW SHARE OF WOMEN-->
+            <views:SKCanvasView PaintSurface="OnCanvasViewPaintSurface" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="1" />
+            <BoxView Grid.Row="4" Grid.Column="1" Color="Pink" HeightRequest="10" VerticalOptions="Center" />
+            <Label Grid.Row="4" Grid.Column="2" FontSize="Small" VerticalOptions="Center" TextColor="White" Text="Number of women" />
+            <!--Label for the NUMBER OF FEMALE GRADUATES-->
+            <Label x:Name="lblFemale" Text="{Binding Major.TotalWomen}" Grid.Column="2" VerticalOptions="Center" Grid.Row="4" FontSize="Large" HorizontalOptions="End" HorizontalTextAlignment="End" TextColor="White" />
+            <BoxView Grid.Row="5" Grid.Column="1" WidthRequest="10" HeightRequest="10" VerticalOptions="Center" Color="LightBlue" />
+            <Label Grid.Row="5" Grid.Column="2" FontSize="Small" VerticalOptions="Center" TextColor="White" Text="Number of men" />
+            <!--Label for the SHARE OF MALE GRADUATES-->
+            <Label x:Name="lblMale" Text="{Binding Major.TotalMen}" Grid.Row="5" Grid.Column="2" FontSize="Large" VerticalOptions="Center" HorizontalOptions="End" HorizontalTextAlignment="End" TextColor="White" />
+            <Label Text="Unemployment rate" Grid.Row="6" HorizontalOptions="Start" FontSize="Large" TextColor="DarkGray" Grid.ColumnSpan="3" />
+            <!--Label for the UNEMPLOYMENT RATE-->
+            <Label x:Name="lblUnemploymentRate" Grid.Row="6" Grid.Column="2" Text="{Binding Major.UnemploymentRate}%}" HorizontalOptions="End" HorizontalTextAlignment="End" FontSize="Large" TextColor="#CBB475" />
+            <!--CALL FOR EXPERTS - CANVAS TO SHOW UNEMPLOYMENT RATE-->
+            <views:SKCanvasView PaintSurface="OnCanvasViewPaintSurface_unemp" Grid.Row="7" Grid.RowSpan="2" Grid.ColumnSpan="1" />
+            <BoxView Grid.Row="7" Grid.Column="1" Color="Green" HeightRequest="10" VerticalOptions="Center" />
+            <Label Grid.Row="7" Grid.Column="2" FontSize="Small" VerticalOptions="Center" TextColor="White" Text="Employed" />
+            <!--Label for the NUMBER OF EMPLOYED GRADUATES-->
+            <Label x:Name="lblEmployed" Grid.Column="2" Text="{Binding Major.TotalEmployed}" VerticalOptions="Center" Grid.Row="7" FontSize="Large" HorizontalOptions="End" HorizontalTextAlignment="End" TextColor="White" />
+            <BoxView Grid.Row="8" Grid.Column="1" HeightRequest="10" VerticalOptions="Center" Color="DarkRed" />
+            <Label Grid.Row="8" Grid.Column="2" FontSize="Small" VerticalOptions="Center" TextColor="White" Text="Unemployed" />
+
+            <!--Label for the NUMBER OF UNEMPLOYED GRADUATES-->
+            <Label x:Name="lblUnemployed" Text="{Binding Major.TotalUnemployed}" Grid.Row="8" Grid.Column="2" FontSize="Large" VerticalOptions="Center" HorizontalOptions="End" HorizontalTextAlignment="End" TextColor="White" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
