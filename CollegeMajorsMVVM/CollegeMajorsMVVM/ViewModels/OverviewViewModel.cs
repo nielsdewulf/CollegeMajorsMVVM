@@ -24,6 +24,11 @@ namespace CollegeMajorsMVVM.ViewModels
             Title = "All";
             LoadMajorsCommand = new Command(async () => await ExecuteLoadMajorsCommand());
         }
+        public async Task ChangeCategory(string cat)
+        {
+            Title = cat;
+            await ExecuteLoadMajorsCommand();
+        }
         async Task ExecuteLoadMajorsCommand()
         {
             if (IsBusy)

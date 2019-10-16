@@ -7,6 +7,7 @@ using Xamarin.Forms.Xaml;
 
 using CollegeMajorsMVVM.Models;
 using CollegeMajorsMVVM.ViewModels;
+using System.Diagnostics;
 
 namespace CollegeMajorsMVVM.Views
 {
@@ -24,10 +25,16 @@ namespace CollegeMajorsMVVM.Views
         }
         public async Task ChangeCategory(string cat)
         {
+            await overviewpage.viewModel.ChangeCategory(cat);
 
-            Detail = new NavigationPage(new OverviewPage(new OverviewViewModel(cat)));
-            if (Device.RuntimePlatform == Device.Android)
-                await Task.Delay(100);
+            /**
+             * Instead of changing the whole Detail page we just access the viewmodel of the view and change the ItemsSource
+             */
+
+
+            /*Detail = new NavigationPage(new OverviewPage(new OverviewViewModel(cat)));*/
+            /*if (Device.RuntimePlatform == Device.Android)
+                await Task.Delay(100);*/
             IsPresented = false;
         }
         

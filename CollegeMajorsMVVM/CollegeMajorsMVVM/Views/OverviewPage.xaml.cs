@@ -14,7 +14,7 @@ namespace CollegeMajorsMVVM.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OverviewPage : ContentPage
     {
-        OverviewViewModel viewModel;
+        public OverviewViewModel viewModel;
         public OverviewPage()
         {
             InitializeComponent();
@@ -22,6 +22,7 @@ namespace CollegeMajorsMVVM.Views
 
             lvwMajors.ItemSelected += OnItemSelected;
         }
+
         public OverviewPage(OverviewViewModel ovm)
         {
             InitializeComponent();
